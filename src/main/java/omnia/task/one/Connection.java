@@ -24,9 +24,9 @@ public class Connection {
         builder.registerTypeAdapter(List.class, new JsonStringArrayConverter());
         builder.registerTypeAdapter(Offer.class, new JsonOfferConverter());
         Gson gson = builder.create();
-        List<String> jsonLines = gson.fromJson(answer, List.class);
+        List<String> jsonOffersLines = gson.fromJson(answer, List.class);
         List<Offer> offerList = new ArrayList<Offer>();
-        for (String jsonLine : jsonLines) {
+        for (String jsonLine : jsonOffersLines) {
             offerList.add(gson.fromJson(jsonLine, Offer.class));
         }
         return offerList;
