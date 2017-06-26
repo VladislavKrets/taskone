@@ -12,20 +12,17 @@ import java.util.List;
  * Created by lollipop on 26.06.2017.
  */
 public class JsonOfferConverter implements JsonDeserializer<Offer> {
+    @Override
     public Offer deserialize(JsonElement jsonElement, Type type,
                              JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject offerObject = jsonElement.getAsJsonObject();
-        List<Source> sources = new ArrayList<Source>();
+        List<String> sources = new ArrayList<String>();
         JsonArray sourceArray = offerObject.getAsJsonObject().getAsJsonArray("sources");
 
-        Source source;
+
         for (JsonElement sourceElement : sourceArray) {
-            source = new Source(
-                    sourceElement.getAsJsonObject().get("id").getAsString(),
-                    sourceElement.getAsJsonObject().get("title").getAsString(),
-                    sourceElement.getAsJsonObject().get("allowed").getAsInt()
-            );
-            sources.add(source);
+
+            sources.add(sourceElement.getAsString());
         }
         Offer offer = new Offer(
                 offerObject.getAsJsonObject().get("id").getAsInt(),

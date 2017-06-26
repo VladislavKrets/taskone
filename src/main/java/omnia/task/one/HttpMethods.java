@@ -25,7 +25,7 @@ public class HttpMethods {
 
     static {
         BASE_URL = "http://api.omnia.online/3.0/";
-        TOKEN_KEY = "";
+        TOKEN_KEY = "6214d8b73e6b5d7838e095a63dd39b87c6655cc4";
         httpClient = HttpClients.createDefault();
     }
 

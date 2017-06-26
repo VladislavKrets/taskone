@@ -11,9 +11,9 @@ public class Offer {
     private String title;
     private String preview_url;
     private String description;
-    private List<Source> sources;
+    private List<String> sources;
 
-    public Offer(int id, String offer_id, String title, String preview_url, String description, List<Source> sources) {
+    public Offer(int id, String offer_id, String title, String preview_url, String description, List<String> sources) {
         this.id = id;
         this.offer_id = offer_id;
         this.title = title;
@@ -22,7 +22,7 @@ public class Offer {
         this.sources = sources;
     }
 
-    public List<Source> getSources() {
+    public List<String> getSources() {
         return sources;
     }
 

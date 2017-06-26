@@ -10,6 +10,7 @@ import java.util.List;
  * Created by lollipop on 26.06.2017.
  */
 public class JsonStringArrayConverter implements JsonDeserializer<List<String>>{
+    @Override
     public List<String> deserialize(JsonElement jsonElement, Type type,
                                     JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonArray array = jsonElement.getAsJsonObject().getAsJsonArray("offers");
