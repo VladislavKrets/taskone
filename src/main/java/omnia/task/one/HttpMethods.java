@@ -12,9 +12,6 @@ import org.apache.http.impl.client.HttpClients;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,10 +45,14 @@ public class HttpMethods {
     private static String getResponse(HttpRequestBase requestBase) throws IOException {
         CloseableHttpResponse response = httpClient.execute(requestBase);
         BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
-        String answer = reader.readLine();
+        StringBuilder builder = new StringBuilder();
+        String answer;
+        while ((answer = reader.readLine()) != null) {
+            builder.append(answer);
+        }
         reader.close();
         response.close();
-        return answer;
+        return builder.toString();
     }
 
 }

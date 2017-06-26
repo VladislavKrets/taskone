@@ -14,9 +14,9 @@ import java.util.List;
 public class JsonOfferConverter implements JsonDeserializer<Offer> {
     public Offer deserialize(JsonElement jsonElement, Type type,
                              JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        JsonObject object = jsonElement.getAsJsonObject();
+        JsonObject offerObject = jsonElement.getAsJsonObject();
         List<Source> sources = new ArrayList<Source>();
-        JsonArray sourceArray = object.getAsJsonObject().getAsJsonArray("sources");
+        JsonArray sourceArray = offerObject.getAsJsonObject().getAsJsonArray("sources");
 
         Source source;
         for (JsonElement sourceElement : sourceArray) {
@@ -28,11 +28,11 @@ public class JsonOfferConverter implements JsonDeserializer<Offer> {
             sources.add(source);
         }
         Offer offer = new Offer(
-                object.getAsJsonObject().get("id").getAsInt(),
-                object.getAsJsonObject().get("offer_id").getAsString(),
-                object.getAsJsonObject().get("title").getAsString(),
-                object.getAsJsonObject().get("preview_url").getAsString(),
-                object.getAsJsonObject().get("description").getAsString(),
+                offerObject.getAsJsonObject().get("id").getAsInt(),
+                offerObject.getAsJsonObject().get("offer_id").getAsString(),
+                offerObject.getAsJsonObject().get("title").getAsString(),
+                offerObject.getAsJsonObject().get("preview_url").getAsString(),
+                offerObject.getAsJsonObject().get("description").getAsString(),
                 sources
         );
         return offer;
