@@ -12,14 +12,21 @@ public class Offer {
     private String preview_url;
     private String description;
     private List<String> sources;
+    private List<PartnerPayment> partnerPayments;
 
-    public Offer(int id, String offer_id, String title, String preview_url, String description, List<String> sources) {
+    public Offer(int id, String offer_id, String title, String preview_url,
+                 String description, List<String> sources, List<PartnerPayment> partnerPayments) {
         this.id = id;
         this.offer_id = offer_id;
         this.title = title;
         this.preview_url = preview_url;
         this.description = description;
         this.sources = sources;
+        this.partnerPayments = partnerPayments;
+    }
+
+    public List<PartnerPayment> getPartnerPayments() {
+        return partnerPayments;
     }
 
     public List<String> getSources() {
